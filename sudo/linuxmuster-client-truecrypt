@@ -1,0 +1,2 @@
+# for truecrypt
+%plugdev ALL=(ALL) /usr/bin/truecrypt 

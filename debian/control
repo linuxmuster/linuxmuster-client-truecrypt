@@ -1,0 +1,17 @@
+Source: linuxmuster-client-truecrypt
+Section: admin
+Priority: optional
+Maintainer: Ruediger Beck <jeffbeck@web.de>
+Build-Depends: debhelper , perl-base, fakeroot
+Standards-Version: 3.5.2
+
+
+
+Package: linuxmuster-client-truecrypt
+Architecture: all
+Suggests: 
+Pre-Depends: 
+Depends: 
+Description: Additional stuff to run truecrypt on a linuxmuster-client
+  The truecrypt standard package needs to be downloaded  and installed 
+  seperately (32/64 bit). See: www.truecrypt.org/downloads
