@@ -1,0 +1,11 @@
+Download truecrypt automatically
+see scripts/...
+
+
+
+Server installer:
+
+- does this package install nicely on a server?
+- download/install truecrypt without gui?
+- sudo is not necessary on a server
+- ask to add a Desktop icon for clients (all users/teachers)

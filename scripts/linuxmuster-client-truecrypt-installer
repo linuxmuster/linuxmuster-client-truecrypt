@@ -1,0 +1,27 @@
+#!/bin/sh
+
+echo "########## START: Downloading truecrypt"
+
+echo "Please download manually";
+
+
+
+
+# Lang Schleife starts here
+DOWNLOADS=/tmp
+
+# Todo
+# 0. use uninstaller to uninstall old version
+# 1. use uname to find out what to download (32/64bit)
+# 2. download to tmp 
+# 3. unpack
+# 4. run installer (hide opening windows, what happens without GUI?)
+
+
+
+# download command
+#cd $DOWNLOADS; wget -t 10 -c --timestamping  http://www.truecrypt.org/download/truecrypt-7.1a-linux-x86.tar.gz
+#cd $DOWNLOADS; wget -t 10 -c --timestamping  http://www.truecrypt.org/download/truecrypt-7.1a-linux-x64.tar.gz
+
+
+echo "########## DONE: downloading truecrypt"
