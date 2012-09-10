@@ -24,7 +24,7 @@ set -e
 #     `abort-remove' or `abort-deconfigure'.
 
 case "$1" in
-    configure)
+    configure|reconfigure)
     # download truecrypt and install it
     /usr/sbin/linuxmuster-client-truecrypt-installer
     ;;
@@ -34,12 +34,10 @@ case "$1" in
     /usr/sbin/linuxmuster-client-truecrypt-installer
     ;;
 
-
     upgrade)
     # download truecrypt and install it
     /usr/sbin/linuxmuster-client-truecrypt-installer
     ;;
-
 
     abort-upgrade|abort-remove|abort-deconfigure)
 
