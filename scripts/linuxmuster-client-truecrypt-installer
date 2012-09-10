@@ -1,27 +1,142 @@
-#!/bin/sh
+#!/usr/bin/perl -w
+# This Script (linuxmuster-client-truecrypt-installer) was created by Rüdiger Beck
+# It is released under the GPL Version 3
+# For Bugs send mail to (jeffbeck-at-web.de)
 
-echo "########## START: Downloading truecrypt"
+use strict;
+use Getopt::Long;
+use File::Basename;
+use English;
+use File::Path qw(remove_tree);
 
-echo "Please download manually";
+my $home=$ENV{'HOME'};
+#my $UID_name=getpwuid($UID);
+#my $EUID_name=getpwuid($EUID);
+
+my $help=0;
+my $info=0;
+my $download_dir="/tmp";
+my $uninstaller="/usr/bin/truecrypt-uninstall.sh";
 
 
 
+# Parsen der Optionen
+my $testopt=GetOptions(
+           "help|h" => \$help,
+           "info|i" => \$info,
+          );
 
-# Lang Schleife starts here
-DOWNLOADS=/tmp
+# Prüfen, ob Optionen erkannt wurden, sonst Abbruch
+&check_options($testopt);
 
-# Todo
-# 0. use uninstaller to uninstall old version
-# 1. use uname to find out what to download (32/64bit)
-# 2. download to tmp 
+
+
+if ($help==1){
+   print('
+
+This script installs truecrypt
+
+Options
+  -h  / --help  
+   show this help
+
+');
+   print "\n";
+   exit;
+}
+
+
+print "########## START: Downloading truecrypt\n";
+
+
 # 3. unpack
 # 4. run installer (hide opening windows, what happens without GUI?)
 
 
 
-# download command
-#cd $DOWNLOADS; wget -t 10 -c --timestamping  http://www.truecrypt.org/download/truecrypt-7.1a-linux-x86.tar.gz
-#cd $DOWNLOADS; wget -t 10 -c --timestamping  http://www.truecrypt.org/download/truecrypt-7.1a-linux-x64.tar.gz
+my $uname=`uname -m`;;
+chomp($uname);
+my $download_file="";
+my $filename="";
+my $version="7.1a";
+my $arch="";
 
 
-echo "########## DONE: downloading truecrypt"
+# download truecrypt to tmp 
+if ($uname eq "x86_64"){
+    $arch="x64";
+} elsif ($uname eq "i686"){
+    $arch="x86";
+} else {
+    print "\nCould not detect architecture of the kernel from $uname.\n\n";
+    exit;
+}
+
+
+$filename="truecrypt-".$version."-linux-".$arch.".tar.gz";
+$download_file="http://www.truecrypt.org/download/".$filename;
+
+my $command="cd $download_dir; wget -t 10 -c --timestamping $download_file";
+print "$command\n";
+system("$command");
+
+
+# continue only if download was successful ????
+
+# uninstall old installation, if existing
+if (-f $uninstaller){
+    print "Detected installed version of truecrypt.\n";
+    my $command="Running $uninstaller\n";
+    print "$command\n";
+    #system("$command");
+} else {
+    print "$uninstaller not found. I guess Truecrypt is not installed on this system!";
+}
+
+
+# unpacking
+system("cd $download_dir; tar xzvf $filename");
+
+# installing
+my $install="/tmp/truecrypt-".$version."-setup-".$arch;
+system($install);
+
+
+
+
+print "########## DONE: downloading and installing truecrypt\n";
+
+
+############################################################
+# subs
+############################################################
+sub  check_options{
+   my ($parse_ergebnis) = @_;
+   if (not $parse_ergebnis==1){
+      my @list = split(/\//,$0);
+      my $scriptname = pop @list;
+      print "\nYou have made a mistake, when specifying options.\n"; 
+      print "See error message above. \n\n";
+      print "... $scriptname is terminating.\n\n";
+      exit;
+   } else {
+      #print "All options  were recognized.\n";
+   }
+
+}
+
+
+
+
+print "";
+
+
+
+
+
+
+
+
+
+
+
