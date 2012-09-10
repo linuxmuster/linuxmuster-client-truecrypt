@@ -26,18 +26,18 @@ set -e
 case "$1" in
     configure)
     # download truecrypt and install it
-    linuxmuster-client-truecrypt-installer
+    /usr/sbin/linuxmuster-client-truecrypt-installer
     ;;
 
     install)
     # download truecrypt and install it
-    linuxmuster-client-truecrypt-installer
+    /usr/sbin/linuxmuster-client-truecrypt-installer
     ;;
 
 
     upgrade)
     # download truecrypt and install it
-    linuxmuster-client-truecrypt-installer
+    /usr/sbin/linuxmuster-client-truecrypt-installer
     ;;
 
 

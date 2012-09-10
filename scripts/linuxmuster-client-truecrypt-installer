@@ -49,9 +49,7 @@ Options
 print "########## START: Downloading truecrypt\n";
 
 
-# 3. unpack
-# 4. run installer (hide opening windows, what happens without GUI?)
-
+# are there truecrypt mounts? --> exit with message ????
 
 
 my $uname=`uname -m`;;
@@ -86,9 +84,9 @@ system("$command");
 # uninstall old installation, if existing
 if (-f $uninstaller){
     print "Detected installed version of truecrypt.\n";
-    my $command="Running $uninstaller\n";
+    my $command="$uninstaller ...\n";
     print "$command\n";
-    #system("$command");
+    system("$command");
 } else {
     print "$uninstaller not found. I guess Truecrypt is not installed on this system!";
 }

@@ -30,7 +30,8 @@ install:
 	@install -d -m0440 -oroot -groot $(ETC)
 	@install -oroot -groot --mode=0440 sudo/linuxmuster-client-truecrypt $(ETC)
 	@echo '   * Adding Icon'
-
+	@install -d -m0755 -oroot -groot $(SBIN)
+	@install -oroot -groot --mode=0440 scripts/linuxmuster-client-truecrypt-installer $(SBIN)
 
 
 # build a package
