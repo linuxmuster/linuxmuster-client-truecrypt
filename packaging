@@ -1,0 +1,12 @@
+To make a debian package :
+
+make deb
+
+
+Before packaging:
+ - new truecrypt version:
+   -Change Description in debian/control to show version number in first line.
+   - Change download path
+   - check if uninstaller script is still working
+   - create a tag in git   
+
