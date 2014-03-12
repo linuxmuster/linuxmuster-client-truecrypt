@@ -1,3 +1,10 @@
+linuxmuster-client-truecrypt (0.1.0-trusty1) trusty-testing; urgency=low
+
+  * Created a branch release/trusty
+  * Moved to trusty-testing without changes in the code
+
+ -- Frank Schiebel <frank@linuxmuster.net>  Wed, 12 Mar 2014 18:03:16 +0100
+
 linuxmuster-client-truecrypt (0.1.0-1) precise-testing; urgency=low
 
   * New package for precise repo 
