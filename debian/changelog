@@ -1,3 +1,9 @@
+linuxmuster-client-truecrypt (0.2.1-1) precise; urgency=low
+
+  * New package for precise repo 
+
+ -- bz <bz@adler>  Tue, 03 Jun 2014 12:23:41 +0200
+
 linuxmuster-client-truecrypt (0.1.0-1) precise-testing; urgency=low
 
   * New package for precise repo 

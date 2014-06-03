@@ -33,6 +33,8 @@ install:
 	@install -d -m0755 -oroot -groot $(SBIN)
 	@install -oroot -groot --mode=0700 scripts/linuxmuster-client-truecrypt-installer $(SBIN)
 
+clean:
+	# nothing
 
 # build a package
 deb:

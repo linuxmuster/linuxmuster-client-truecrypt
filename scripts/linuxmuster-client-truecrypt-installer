@@ -84,7 +84,7 @@ my $command="cd $download_dir; wget -t 10 -c --timestamping $download_file";
 print "$command\n";
 system("$command");
 
-my $sha1_result=`sha1sum $filename`;
+my $sha1_result=`sha1sum $download_dir/$filename`;
 #print "sha1: >$sha1_result<\n";
 my ($sha1_download,$file)=split(/\s/,$sha1_result);
 #print "sha1: >$sha1_download<\n";
@@ -93,6 +93,7 @@ if ($sha1 eq $sha1_download){
     print "SHA1 verification valid\n";
 } else {
     print "\nERROR: The downloaded file has not the expected SHA1 sum\n\n";
+    exit;
 }
 
 
@@ -107,11 +108,13 @@ if ($download==1){
 # uninstall old installation, if existing
 if (-f $uninstaller){
     print "Detected installed version of truecrypt.\n";
-    my $command="$uninstaller ...\n";
-    print "$command\n";
+    print "Uninstalling it ....\n";
+    my $command="$uninstaller";
+    print "$command ... \n";
     system("$command");
 } else {
-    print "$uninstaller not found. I guess Truecrypt is not installed on this system!";
+    print "$uninstaller not found.\n";
+    print "  * I guess Truecrypt is not installed on this system!\n";
 }
 
 

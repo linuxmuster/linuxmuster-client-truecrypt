@@ -11,8 +11,8 @@ Package: linuxmuster-client-truecrypt
 Architecture: all
 Suggests: 
 Pre-Depends: 
-Depends: 
-Description: Install truecrypt 7.1a and make it available to all users 
-  The truecrypt standard package 7.1a for 32bit/64bit is downloaded from
-  www.truecrypt.org/downloads and installed. The group plugdev kann use
+Depends: coreutils 
+Description: Install truecrypt 7.1a and make it available to all users
+  The truecrypt standard package 7.1a for 32bit/64bit is downloaded
+  from truecrypt.ch and installed. The group plugdev kann use
   truecrypt, i.e. in most cases all users.
