@@ -15,6 +15,7 @@ my $home=$ENV{'HOME'};
 
 my $help=0;
 my $info=0;
+my $download=0;
 my $download_dir="/tmp";
 my $uninstaller="/usr/bin/truecrypt-uninstall.sh";
 
@@ -24,6 +25,7 @@ my $uninstaller="/usr/bin/truecrypt-uninstall.sh";
 my $testopt=GetOptions(
            "help|h" => \$help,
            "info|i" => \$info,
+           "download" => \$download,
           );
 
 # Prüfen, ob Optionen erkannt wurden, sonst Abbruch
@@ -58,26 +60,47 @@ my $download_file="";
 my $filename="";
 my $version="7.1a";
 my $arch="";
-
+my $sha1="nonsense";
 
 # download truecrypt to tmp 
 if ($uname eq "x86_64"){
     $arch="x64";
+    $sha1="086cf24fad36c2c99a6ac32774833c74091acc4d";
 } elsif ($uname eq "i686"){
     $arch="x86";
+    $sha1="0e77b220dbbc6f14101f3f913966f2c818b0f588";
 } else {
     print "\nCould not detect architecture of the kernel from $uname.\n\n";
     exit;
 }
 
-
 $filename="truecrypt-".$version."-linux-".$arch.".tar.gz";
-$download_file="http://www.truecrypt.org/download/".$filename;
+# old truecrypt site, offline June 2014
+#$download_file="http://www.truecrypt.org/download/".$filename;
+# New site truecrypt.ch
+$download_file="http://truecrypt.ch/download/current/".$filename;
 
 my $command="cd $download_dir; wget -t 10 -c --timestamping $download_file";
 print "$command\n";
 system("$command");
 
+my $sha1_result=`sha1sum $filename`;
+#print "sha1: >$sha1_result<\n";
+my ($sha1_download,$file)=split(/\s/,$sha1_result);
+#print "sha1: >$sha1_download<\n";
+
+if ($sha1 eq $sha1_download){
+    print "SHA1 verification valid\n";
+} else {
+    print "\nERROR: The downloaded file has not the expected SHA1 sum\n\n";
+}
+
+
+
+if ($download==1){
+    print "download finished\n";
+    exit;
+}
 
 # continue only if download was successful ????
 
