@@ -41,7 +41,8 @@ This script installs truecrypt
 Options
   -h  / --help  
    show this help
-
+  --download 
+   download truecrypt only to /tmp
 ');
    print "\n";
    exit;
@@ -78,7 +79,7 @@ $filename="truecrypt-".$version."-linux-".$arch.".tar.gz";
 # old truecrypt site, offline June 2014
 #$download_file="http://www.truecrypt.org/download/".$filename;
 # New site truecrypt.ch
-$download_file="http://truecrypt.ch/download/current/".$filename;
+$download_file="http://download.truecrypt.ch/current/".$filename;
 
 my $command="cd $download_dir; wget -t 10 -c --timestamping $download_file";
 print "$command\n";

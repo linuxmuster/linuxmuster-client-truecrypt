@@ -1,3 +1,9 @@
+linuxmuster-client-truecrypt (0.2.2-1) trusty; urgency=low
+
+  * New source dir on server truecrypt.ch
+
+ -- bz <bz@adler>  Wed, 25 Jun 2014 00:31:58 +0200
+
 linuxmuster-client-truecrypt (0.2.1-1) precise; urgency=low
 
   * New package for precise repo 
